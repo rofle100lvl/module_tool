@@ -23,11 +23,9 @@ final class GenerateService {
   public func run(targetName: String, isFeature: Bool, podsRequired: Bool) throws {
     let source = isFeature ? Source.feature : Source.core
 
-//    guard let urlString = Environment.getVar("Tuist_Project") else {
-//      throw GenerateServiceError.firstLaunchSave
-//    }
-
-    let urlString = "/Users/rofle100lvl/arcadia/mobile/travel/ios/"
+    guard let urlString = Environment.getVar("Tuist_Project") else {
+      throw GenerateServiceError.firstLaunchSave
+    }
 
     guard let dir = URL(string: "file://" + urlString) else {
       throw GenerateServiceError.settedVariableNotAnURL
